@@ -14,9 +14,8 @@ public class GreetingController {
         this.greetingService = greetingService;
     }
 
-    @PutMapping("/{id}")
-    public Greeting updateGreeting(@PathVariable Long id, @RequestBody String newMessage) {
-        return greetingService.updateGreetingMessage(id, newMessage);
+    @DeleteMapping("/{id}")
+    public boolean deleteGreeting(@PathVariable Long id) {
+        return greetingService.deleteGreeting(id);
     }
 }
-
