@@ -1,16 +1,8 @@
 package com.example.SpringGreetingApplication.controller;
-import com.example.SpringGreetingApplication.service.GreetingService;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.HashMap;
-import java.util.Map;
-
-
+import com.example.SpringGreetingApplication.model.Greeting;
+import com.example.SpringGreetingApplication.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -31,5 +23,10 @@ public class GreetingController {
         String message = greetingService.getGreetingMessage(firstName, lastName);
         return Map.of("message", message);
     }
-}
 
+    @PostMapping
+    public Map<String, String> saveGreeting(@RequestBody String message) {
+        Greeting greeting = greetingService.saveGreetingMessage(message);
+        return Map.of("message", greeting.getMessage());
+    }
+}
