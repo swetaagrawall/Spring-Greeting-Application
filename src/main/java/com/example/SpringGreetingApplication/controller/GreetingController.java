@@ -8,11 +8,10 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
+import java.util.List;
 
 @RestController
-@RequestMapping("/greeting")
+@RequestMapping("/greetings")
 public class GreetingController {
 
     private final GreetingService greetingService;
@@ -22,9 +21,8 @@ public class GreetingController {
         this.greetingService = greetingService;
     }
 
-    @GetMapping("/{id}")
-    public Map<String, String> getGreetingById(@PathVariable Long id) {
-        Greeting greeting = greetingService.findGreetingById(id);
-        return Map.of("message", greeting.getMessage());
+    @GetMapping
+    public List<Greeting> getAllGreetings() {
+        return greetingService.findAllGreetings();
     }
 }

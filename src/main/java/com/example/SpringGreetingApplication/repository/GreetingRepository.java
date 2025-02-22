@@ -4,6 +4,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
 public interface GreetingRepository extends JpaRepository<Greeting, Long> {
-    Greeting findGreetingById(Long id);
+    List<Greeting> findAll();
 }
