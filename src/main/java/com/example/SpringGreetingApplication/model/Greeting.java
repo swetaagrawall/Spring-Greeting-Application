@@ -3,7 +3,6 @@ package com.example.SpringGreetingApplication.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
-
 @Entity
 public class Greeting {
 
@@ -11,7 +10,6 @@ public class Greeting {
     private Long id;
     private String message;
 
-    // Constructors, Getters, Setters
     public Greeting() {}
 
     public Greeting(Long id, String message) {

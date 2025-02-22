@@ -6,6 +6,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
+
 @RestController
 @RequestMapping("/greeting")
 public class GreetingController {
@@ -17,16 +22,9 @@ public class GreetingController {
         this.greetingService = greetingService;
     }
 
-    @GetMapping
-    public Map<String, String> getGreeting(@RequestParam(required = false) String firstName,
-                                           @RequestParam(required = false) String lastName) {
-        String message = greetingService.getGreetingMessage(firstName, lastName);
-        return Map.of("message", message);
-    }
-
-    @PostMapping
-    public Map<String, String> saveGreeting(@RequestBody String message) {
-        Greeting greeting = greetingService.saveGreetingMessage(message);
+    @GetMapping("/{id}")
+    public Map<String, String> getGreetingById(@PathVariable Long id) {
+        Greeting greeting = greetingService.findGreetingById(id);
         return Map.of("message", greeting.getMessage());
     }
 }
